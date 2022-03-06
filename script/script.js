@@ -49,6 +49,16 @@ function playRound(playerSelection, computerSelection) {
 const playerSelection = humanPlay(rock, paper, scissors);
 const computerSelection = computerPlay(rock, paper, scissors);
 console.log(computerSelection, playerSelection);
-
-
+let playerScore = 0;
+let computerScore = 0;
+let round = 0;
+for (let i=0; i < 5; i++) {
+    let humanInput = prompt(`${rock}? ${paper}? or ${scissors}?. Pls decide`)
+    console.log(playRound());
+    console.log(playerScore++, computerScore++);
+}
+//create a function to play game in rounds
 //create a loop for game rounds
+function game() {
+
+}
