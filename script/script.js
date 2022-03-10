@@ -46,13 +46,13 @@ function playRound(playerSelection, computerSelection) {
         return `You win! ${scissors} beats ${paper}.`;
     }
 }
-let playerSelection;
+let playerSelection = rock;
 const computerSelection = computerPlay(rock, paper, scissors);
 
 //create a function to play game in rounds
 //create a loop for game rounds
-function game(playRound) {
-    playRound = playRound(playerSelection, computerSelection)
+function game() {
+    console.log(playRound(playerSelection, computerSelection));
     for (let i = 0; i < 5; i++) {
         playerSelection = prompt(`${rock}? ${paper}? or ${scissors}?. Pls decide`);
         
@@ -60,14 +60,14 @@ function game(playRound) {
             console.log("Empty");
         } else if (playerSelection.toLowerCase() === "rock") {
             console.log(rock);
+            console.log(playRound(playerSelection, computerSelection));
         } else if (playerSelection.toLowerCase() === "paper") {
             console.log(paper);
         } else if (playerSelection.toLowerCase() === "scissors") {
             console.log(scissors);
-            console.log(playRound);
         }
     }
     
 }
 
-game(playRound);
+game();
