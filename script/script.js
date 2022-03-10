@@ -11,21 +11,21 @@ return pick[randomPick];
 }
 
 //create a variabe asking for human's input
-let humanInput = prompt(`${rock}? ${paper}? or ${scissors}?. Pls decide`)
+// let humanInput = prompt(`${rock}? ${paper}? or ${scissors}?. Pls decide`)
 //create a function for human's choice or selection
-function humanPlay(rock, paper, scissors) {
-    if (humanInput === null || humanInput === "") {
-        return "Empty";
-    } else if (humanInput.toLowerCase() === "rock") {
-        return rock;
-    } else if (humanInput.toLowerCase() === "paper") {
-        return paper;
-    } else if (humanInput.toLowerCase() === "scissors") {
-        return scissors;
-    } else {
-        return "Invalid parameters";
-    }
-}
+// function humanPlay(rock, paper, scissors) {
+    // if (humanInput === null || humanInput === "") {
+    //     console.log("Empty");
+    // } else if (humanInput.toLowerCase() === "rock") {
+    //     console.log(rock);
+    // } else if (humanInput.toLowerCase() === "paper") {
+    //     console.log(paper);
+    // } else if (humanInput.toLowerCase() === "scissors") {
+    //     console.log(scissors);
+    // } else {
+        // return "Invalid parameters";
+    // }
+// }
 
 //create a function to compare human & computer selection
 //decide the winner of the Round
@@ -46,19 +46,28 @@ function playRound(playerSelection, computerSelection) {
         return `You win! ${scissors} beats ${paper}.`;
     }
 }
-const playerSelection = humanPlay(rock, paper, scissors);
+let playerSelection;
 const computerSelection = computerPlay(rock, paper, scissors);
-console.log(computerSelection, playerSelection);
-let playerScore = 0;
-let computerScore = 0;
-let round = 0;
-for (let i=0; i < 5; i++) {
-    let humanInput = prompt(`${rock}? ${paper}? or ${scissors}?. Pls decide`)
-    console.log(playRound());
-    console.log(playerScore++, computerScore++);
-}
+
 //create a function to play game in rounds
 //create a loop for game rounds
-function game() {
-
+function game(playRound) {
+    playRound = playRound(playerSelection, computerSelection)
+    for (let i = 0; i < 5; i++) {
+        playerSelection = prompt(`${rock}? ${paper}? or ${scissors}?. Pls decide`);
+        
+        if (playerSelection === null || playerSelection === "") {
+            console.log("Empty");
+        } else if (playerSelection.toLowerCase() === "rock") {
+            console.log(rock);
+        } else if (playerSelection.toLowerCase() === "paper") {
+            console.log(paper);
+        } else if (playerSelection.toLowerCase() === "scissors") {
+            console.log(scissors);
+            console.log(playRound);
+        }
+    }
+    
 }
+
+game(playRound);
