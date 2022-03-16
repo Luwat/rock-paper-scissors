@@ -10,64 +10,26 @@ let randomPick = Math.floor(Math.random() * pick.length);
 return pick[randomPick]; 
 }
 
-//create a variabe asking for human's input
-// let humanInput = prompt(`${rock}? ${paper}? or ${scissors}?. Pls decide`)
-//create a function for human's choice or selection
-// function humanPlay(rock, paper, scissors) {
-    // if (humanInput === null || humanInput === "") {
-    //     console.log("Empty");
-    // } else if (humanInput.toLowerCase() === "rock") {
-    //     console.log(rock);
-    // } else if (humanInput.toLowerCase() === "paper") {
-    //     console.log(paper);
-    // } else if (humanInput.toLowerCase() === "scissors") {
-    //     console.log(scissors);
-    // } else {
-        // return "Invalid parameters";
-    // }
-// }
-
 //create a function to compare human & computer selection
-//decide the winner of the Round
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        return "It is a tie";
-    } else if (playerSelection === rock && computerSelection === paper) {
-        return `You lose! ${paper} beats ${rock}.`;
-    } else if (playerSelection === paper && computerSelection === rock) {
-        return `You win! ${paper} beats ${rock}.`;
-    } else if (playerSelection === rock && computerSelection === scissors) {
-        return `You win! ${rock} beats ${scissors}.`;
-    } else if (playerSelection === scissors && computerSelection === rock) {
-       return `You lose! ${rock} beats ${scissors}.`;
-    } else if (playerSelection === paper && computerSelection === scissors) {
-        return `You lose! ${scissors} beats ${paper}.`;
-    } else if (playerSelection === scissors && computerSelection === paper) {
-        return `You win! ${scissors} beats ${paper}.`;
-    }
+    if (playerSelection.toLowerCase() === "rock") {
+        playerSelection = rock;
+        console.log(playerSelection);
+        if (computerSelection === paper) {
+            console.log(computerSelection);
+            console.log(`You lose! ${paper} beats ${rock}.`);
+        } else if (computerSelection === rock) {
+            console.log(computerSelection);
+            console.log(`It is a tie!`);
+        } else if (computerSelection === scissors) {
+            console.log(computerSelection);
+            console.log(`You win! ${rock} beats ${scissors}.`);
+        }
+    } 
 }
-let playerSelection = rock;
+const playerSelection = "RoCk";
 const computerSelection = computerPlay(rock, paper, scissors);
 
-//create a function to play game in rounds
-//create a loop for game rounds
-function game() {
-    console.log(playRound(playerSelection, computerSelection));
-    for (let i = 0; i < 5; i++) {
-        playerSelection = prompt(`${rock}? ${paper}? or ${scissors}?. Pls decide`);
-        
-        if (playerSelection === null || playerSelection === "") {
-            console.log("Empty");
-        } else if (playerSelection.toLowerCase() === "rock") {
-            console.log(rock);
-            console.log(playRound(playerSelection, computerSelection));
-        } else if (playerSelection.toLowerCase() === "paper") {
-            console.log(paper);
-        } else if (playerSelection.toLowerCase() === "scissors") {
-            console.log(scissors);
-        }
-    }
-    
-}
-
-game();
+playRound(playerSelection, computerSelection);
+//compare choice or selection and decide the winner
+//create a loop for game rounds 
