@@ -3,7 +3,7 @@ const rock = "Rock";
 const paper = "Paper";
 const scissors = "Scissors";
 //create a function for computer to play
-function computerPlay(rock, paper, scissors) {
+const computerPlay = (rock, paper, scissors) => {
 let pick = [rock, paper, scissors];
 let randomPick = Math.floor(Math.random() * pick.length);
 
@@ -11,7 +11,7 @@ return pick[randomPick];
 }
 
 //create a function to compare human & computer selection
-function playRound(playerSelection, computerSelection) {
+const playRound = (playerSelection, computerSelection) => {
     
     if (playerSelection.toLowerCase() === "rock" ) {
         playerSelection = rock;
@@ -71,7 +71,7 @@ const computerSelection = computerPlay(rock, paper, scissors);
 //compare choice or selection and decide the winner
 //create a loop for game rounds 
 
-const game = function() {
+const game = () => {
     
     let compScore = 0;
     let userScore = 0;
