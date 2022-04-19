@@ -70,8 +70,8 @@ const game = () => {
     
     //create a loop for game rounds
     for (i = 1; i <= 5; i++){
-        
-        let input = prompt("you choose rock");
+
+        let input = prompt("Choose Rock, Paper or Scissors!");
 
         playerSelection = input;
         if ( input === playerSelection) {
