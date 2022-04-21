@@ -3,11 +3,12 @@ const rock = 'Rock';
 const paper = 'Paper';
 const scissors = 'Scissors';
 let score = document.querySelector('.score');
-let playerScore = document.querySelector('.playerscore');
-let compScore = document.querySelector('.compscore');
+let playerScore = document.querySelector('.player-score');
+let compScore = document.querySelector('.computer-score');
 let playerWin = document.querySelector('.play-result');
 let computerWin = document.querySelector('.play-result');
 let draw = document.querySelector('.play-result');
+let winner = document.querySelector('.winner')
 
 
 const buttons = document.querySelectorAll('.btn');
@@ -23,70 +24,54 @@ let randomPick = Math.floor(Math.random() * pick.length);
 return pick[randomPick]; 
 };
 
+const declareWinner = (playerSelection, computerSelection) => {
+    for (let i= 1; i <= 5; i++) {
+        if (playerScore.innerText == 5) {
+            winner.textContent = `Congratulations! You won the game.`   
+        } else if (compScore.innerText == 5) {
+            winner.textContent = `Oops! Computer won the game.`
+        }
+    }
+};
+
 //create a function to compare human & computer selection
 const playRound = (playerSelection, computerSelection) => {
     playerSelection.target.innerText;
     computerSelection = computerPlay(rock, paper, scissors);
-    
     if (playerSelection.target.innerText ===  'Rock') {
         if (computerSelection === paper) {
+            compScore.innerText++;
             return computerWin.textContent = `You lose! ${paper} beats ${rock}.`;
         } else if (computerSelection === rock) {
             return draw.textContent = `It is a tie!`;
         } else if (computerSelection === scissors) {
+            playerScore.innerText++
             return playerWin.textContent = `You win! ${rock} beats ${scissors}.`;
         }
     } else if (playerSelection.target.innerText === 'Paper') {
         if (computerSelection === paper) {
             return draw.textContent = `It is a tie!`;
         } else if (computerSelection === rock) {
+            playerScore.innerText++
             return playerWin.textContent = `You win! ${paper} beats ${rock}.`
         } else if (computerSelection === scissors) {
+            compScore.innerText++;
             return computerWin.textContent = `You lose! ${scissors} beats ${paper}.`;
         }
     } else if (playerSelection.target.innerText === 'Scissors') {
         if (computerSelection === scissors) {
             return draw.textContent = `It is a tie!`;
         } else if (computerSelection === rock) {
+            compScore.innerText++;
             return computerWin.textContent = `You lose! ${rock} beats ${scissors}.`
         } else if (computerSelection === paper) {
-            return playerWin.textContent = `You win! ${scissors} beats ${paper}.`;
+            playerScore.innerText++
+            return playerWin.textContent = `You win! ${scissors} beats ${paper}.`;  
         }
     }
 };
 
 
-//compare choice or selection and decide the winner 
 
-const game = (playerSelection, computerSelection) => {
-    
-    let compScore = 0;
-    let userScore = 0;
-    let score = `player ${userScore} vs computer ${compScore}`;
-    playerSelection.target.innerText
-    //create a loop for game rounds
-    for (i = 1; i <= 5; i++){
-
-        
-        
-        if (playRound(playerSelection, computerSelection).includes("You win")) {
-            score += `player ${userScore++} vs computer ${compScore}`
-        } else if (playRound(playerSelection, computerSelection).includes("You lose")) {
-            score += `player ${userScore} vs computer ${compScore++}`
-        }else {
-            score += `player ${userScore} vs computer ${compScore}`
-        }
-        console.log(score);
-    }
-    if (compScore > userScore) {
-        console.log(`The final score is ${score}.`);
-        console.log("Computer won the game!");
-    } else if (userScore > compScore) {
-        console.log(`The final score is ${score}.`);
-        console.log("You won the game");
-    } else {
-        console.log(`The final score is ${score}.`);
-        console.log("Draw! Try again.");
-    }
-};
 buttons.forEach(button => button.addEventListener('click', playRound))
+buttons.forEach(button => button.addEventListener('click', declareWinner))
