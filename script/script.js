@@ -8,7 +8,9 @@ let compScore = document.querySelector('.computer-score');
 let playerWin = document.querySelector('.play-result');
 let computerWin = document.querySelector('.play-result');
 let draw = document.querySelector('.play-result');
-let winner = document.querySelector('.winner')
+let winner = document.querySelector('.winner');
+let reset = document.createElement('button');
+reset.classList.add('reset');
 
 
 const buttons = document.querySelectorAll('.btn');
@@ -27,11 +29,20 @@ return pick[randomPick];
 const declareWinner = (playerSelection, computerSelection) => {
     for (let i= 1; i <= 5; i++) {
         if (playerScore.innerText == 5) {
-            winner.textContent = `Congratulations! You won the game.`   
+            winner.textContent = `Congratulations! You won the game.`
         } else if (compScore.innerText == 5) {
-            winner.textContent = `Oops! Computer won the game.`
+            winner.textContent = `Oops! Computer won the game.`;
         }
     }
+
+    if (winner.innerText.includes('Congratulations')) {
+        reset.textContent = `End Game`;
+        score.appendChild(reset);
+    } else if (winner.innerText.includes('Oops')) {
+        reset.textContent = `Try Again now or later!`;
+        score.appendChild(reset);
+    }
+    reset.addEventListener('click', () => window.location.reload())
 };
 
 //create a function to compare human & computer selection
